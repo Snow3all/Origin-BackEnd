@@ -1,7 +1,5 @@
 export class PayloadDto {
-  data: {
-    _id: string;
-    readonly username: string;
-    readonly name: string;
-  };
+  _id: string;
+  readonly username: string;
+  readonly role: string;
 }

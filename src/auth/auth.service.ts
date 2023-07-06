@@ -25,15 +25,18 @@ export class AuthService {
         const token = this.jwtService.sign({
           _id: getUser._id,
           username: getUser.username,
+          role: getUser.role,
         });
         return res.status(200).json({
-          statusCode: 0,
+          status: 0,
           token: token,
+          username: getUser.username,
+          role: getUser.role,
           message: 'Success',
         });
       } else {
         return res.status(200).json({
-          statusCode: 113,
+          status: 113,
           message: 'Password does not match',
         });
       }
@@ -54,12 +57,12 @@ export class AuthService {
         });
         await user.save();
         return res.status(200).json({
-          statusCode: 0,
+          status: 0,
           message: 'Done Registering',
         });
       } else {
         return res.status(200).json({
-          statusCode: 112,
+          status: 112,
           message: 'Please fill all in the required fields',
         });
       }

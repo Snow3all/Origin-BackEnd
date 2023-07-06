@@ -7,6 +7,8 @@ import { ConfigModule } from '@nestjs/config';
 import { JwtAuthGuard } from './lib/jwt-auth.guard';
 import { JwtStrategy } from './lib/jwt.strategy';
 import { APP_GUARD } from '@nestjs/core';
+import { ProductModule } from './product/product.module';
+import { CartModule } from './cart/cart.module';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { APP_GUARD } from '@nestjs/core';
       isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.MONGODB_URL),
+    ProductModule,
+    CartModule,
   ],
   controllers: [AppController],
   providers: [
